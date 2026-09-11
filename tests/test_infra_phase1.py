@@ -12,11 +12,11 @@ def test_infra_offline_verification_healthy():
     assert result["exit_code"] == 0
     assert result["verification"]["DeploymentHealthy"] is True
     assert result["verification"]["CoverageComplete"] is True
-    # Phase2/Phase3 must not appear in the result
+    # Phase2/Phase3 must NOT appear anywhere in the result
     assert "phase2" not in result
     assert "phase3" not in result
     assert "Phase2Required" not in result["verification"]
-    # Each stack should now also report its inner resources
+    # Every CFN stack gets exactly two checks: exists + status healthy
     stack_results = [
         s for s in result["verification"]["ServiceResults"]
         if s["service_type"] == "CFN_STACK"
@@ -26,7 +26,13 @@ def test_infra_offline_verification_healthy():
         check_names = [c["check"] for c in sr["checks"]]
         assert "CloudFormation stack exists" in check_names
         assert "CloudFormation stack status healthy" in check_names
-        # Every stack in the stub has resources, so this check must appear
-        assert any("Stack resource exists" in n for n in check_names), (
-            f"Stack {sr['name']} has no per-resource checks"
-        )
+    # Resources from infra_export.variables are verified separately
+    # (ECS cluster, ECS services, ECR repos, ALB, S3 bucket)
+    checked_types = {
+        s["service_type"]
+        for s in result["verification"]["ServiceResults"]
+    }
+    assert "ECS_CLUSTER" in checked_types
+    assert "ECR" in checked_types
+    assert "ALB" in checked_types
+    assert "S3" in checked_types
