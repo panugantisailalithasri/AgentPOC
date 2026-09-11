@@ -131,13 +131,7 @@ def run_fe_service_checks(
     from deployment_verification.models import ServiceType
 
     if service.service_type == ServiceType.S3:
-        return run_s3_infra_checks(
-            service,
-            aws,
-            verification_start,
-            verification_end,
-            require_recent_objects=True,
-        )
+        return run_s3_infra_checks(service, aws, verification_start, verification_end)
     if service.service_type == ServiceType.CLOUDFRONT:
         return run_cloudfront_checks(service, aws)
     return None

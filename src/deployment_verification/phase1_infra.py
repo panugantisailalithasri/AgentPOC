@@ -111,8 +111,8 @@ def run_ecr_checks(service: ExpectedService, aws: AwsFacade) -> list[CheckResult
                 actual=None,
             )
         ]
-    images = aws.list_ecr_images(repo, max_results=5)
-    return [
+
+    results = [
         CheckResult(
             check="ECR repository exists",
             status=CheckStatus.PASS,
@@ -124,19 +124,29 @@ def run_ecr_checks(service: ExpectedService, aws: AwsFacade) -> list[CheckResult
                 "repositoryUri": described.get("repositoryUri"),
             },
         ),
-        CheckResult(
-            check="ECR repository contains images",
-            status=CheckStatus.PASS if images else CheckStatus.FAIL,
-            resource=resource,
-            reason=(
-                f"Found {len(images)} recent image(s)"
-                if images
-                else "Repository exists but no images were returned"
-            ),
-            expected=">= 1 image",
-            actual={"images": images},
-        ),
     ]
+
+    # Only check for images during BE (app_deploy) deployments.
+    # For Infra deployments the repo is freshly provisioned — images are pushed later during BE.
+    mode = (service.deployment_action or {}).get("mode", "")
+    if mode == "app_deploy":
+        images = aws.list_ecr_images(repo, max_results=5)
+        results.append(
+            CheckResult(
+                check="ECR repository contains images",
+                status=CheckStatus.PASS if images else CheckStatus.FAIL,
+                resource=resource,
+                reason=(
+                    f"Found {len(images)} recent image(s)"
+                    if images
+                    else "Repository exists but no images were returned"
+                ),
+                expected=">= 1 image",
+                actual={"images": images},
+            )
+        )
+
+    return results
 
 
 def run_alb_checks(service: ExpectedService, aws: AwsFacade) -> list[CheckResult]:
@@ -238,7 +248,6 @@ def run_s3_infra_checks(
     aws: AwsFacade,
     verification_start: str | None = None,
     verification_end: str | None = None,
-    require_recent_objects: bool = False,
 ) -> list[CheckResult]:
     bucket = service.identifiers.extra.get("bucket_name") or service.name
     resource = f"s3://{bucket}"
@@ -254,6 +263,7 @@ def run_s3_infra_checks(
                 actual=None,
             )
         ]
+
     results = [
         CheckResult(
             check="S3 bucket exists",
@@ -264,43 +274,31 @@ def run_s3_infra_checks(
             actual={"bucket": bucket},
         )
     ]
-    # Always sample whether the bucket has any objects (infra storage should usually not be empty
-    # after a successful provision+seed; FE requires windowed uploads).
-    if verification_start and verification_end:
+
+    mode = (service.deployment_action or {}).get("mode", "")
+
+    # For FE deployments: verify FE assets were uploaded in the verification window.
+    # For Infra deployments: bucket existence is sufficient — no objects are expected yet.
+    if mode == "fe_deploy" and verification_start and verification_end:
         recent = aws.list_s3_objects_updated_between(bucket, verification_start, verification_end)
-        if require_recent_objects:
-            results.append(
-                CheckResult(
-                    check="S3 objects uploaded in verification window",
-                    status=CheckStatus.PASS if recent else CheckStatus.FAIL,
-                    resource=resource,
-                    reason=(
-                        f"Found {len(recent)} object(s) updated in verification window"
-                        if recent
-                        else "No objects updated in verification window"
-                    ),
-                    expected={"window_start": verification_start, "window_end": verification_end},
-                    actual={
-                        "recent_object_count": len(recent),
-                        "sample_keys": [item.get("Key") for item in recent[:5]],
-                    },
-                )
+        results.append(
+            CheckResult(
+                check="S3 FE assets uploaded in verification window",
+                status=CheckStatus.PASS if recent else CheckStatus.FAIL,
+                resource=resource,
+                reason=(
+                    f"Found {len(recent)} object(s) updated in verification window"
+                    if recent
+                    else "No FE assets updated in verification window"
+                ),
+                expected={"window_start": verification_start, "window_end": verification_end},
+                actual={
+                    "recent_object_count": len(recent),
+                    "sample_keys": [item.get("Key") for item in recent[:5]],
+                },
             )
-        else:
-            results.append(
-                CheckResult(
-                    check="S3 bucket object activity in verification window",
-                    status=CheckStatus.PASS if recent else CheckStatus.INCONCLUSIVE,
-                    resource=resource,
-                    reason=(
-                        f"Found {len(recent)} object update(s) in window"
-                        if recent
-                        else "No object updates in window (acceptable for empty/data buckets)"
-                    ),
-                    expected="optional for infra data buckets",
-                    actual={"recent_object_count": len(recent)},
-                )
-            )
+        )
+
     return results
 
 
@@ -324,7 +322,5 @@ def run_infra_service_checks(
             return []
         return run_alb_checks(service, aws)
     if service.service_type == ServiceType.S3:
-        return run_s3_infra_checks(
-            service, aws, verification_start, verification_end, require_recent_objects=False
-        )
+        return run_s3_infra_checks(service, aws, verification_start, verification_end)
     return None
