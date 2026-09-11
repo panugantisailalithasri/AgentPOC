@@ -15,7 +15,6 @@ def test_healthy_ecs_passes_and_skips_phase2():
     context = load_deployment_agent_output(MOCK)
     result = run_phase1(context, StubAwsFacade(HEALTHY), load_settings())
     assert result.DeploymentHealthy is True
-    assert result.Phase2Required is False
     assert result.CoverageComplete is True
     assert result.FailedChecks == []
     deployment_check = next(
@@ -39,7 +38,6 @@ def test_unhealthy_ecs_fails_desired_count():
     context = load_deployment_agent_output(MOCK)
     result = run_phase1(context, StubAwsFacade(UNHEALTHY), load_settings())
     assert result.DeploymentHealthy is False
-    assert result.Phase2Required is True
     names = [check["check"] for check in result.FailedChecks]
     assert "ECS service deployment completed successfully" in names
     assert "ECS desired count equals running count" in names
@@ -121,7 +119,6 @@ def test_missing_service_is_resource_not_found():
     context.services[0].identifiers.service_name = "does-not-exist"
     result = run_phase1(context, StubAwsFacade(HEALTHY), load_settings())
     assert result.ResourceNotFound
-    assert result.Phase2Required is True
     assert result.DeploymentHealthy is False
 
 
@@ -138,7 +135,6 @@ def test_unknown_service_type_is_check_missing():
     )
     result = run_phase1(context, StubAwsFacade(HEALTHY), load_settings())
     assert result.CoverageComplete is False
-    assert result.Phase2Required is True
     assert any(check["status"] == "CHECK_MISSING" for check in result.MissingChecks)
     # ECS itself is still healthy
     assert not result.FailedChecks

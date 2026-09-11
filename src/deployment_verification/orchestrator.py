@@ -43,8 +43,4 @@ def run_verification(
         "pipeline_summary": context.pipeline_summary,
         "discovery_notes": context.discovery_notes,
         "verification": result.to_dict(),
-        # Back-compat keys for older tests/CLI consumers
-        "phase1": result.to_dict(),
-        "phase2": None,
-        "phase3": None,
     }

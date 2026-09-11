@@ -5,6 +5,24 @@ from typing import Any
 from deployment_verification.aws_facade import AwsFacade
 from deployment_verification.models import CheckResult, CheckStatus, ExpectedService
 
+# AWS resource types → check labels used in per-resource checks
+_CFN_RESOURCE_CHECK_MAP: dict[str, str] = {
+    "AWS::ECS::Cluster": "ECS cluster",
+    "AWS::ECS::Service": "ECS service",
+    "AWS::ECR::Repository": "ECR repository",
+    "AWS::ElasticLoadBalancingV2::LoadBalancer": "ALB",
+    "AWS::ElasticLoadBalancingV2::TargetGroup": "ALB target group",
+    "AWS::ElasticLoadBalancingV2::Listener": "ALB listener",
+    "AWS::S3::Bucket": "S3 bucket",
+    "AWS::CloudFront::Distribution": "CloudFront distribution",
+    "AWS::RDS::DBInstance": "RDS DB instance",
+    "AWS::RDS::DBCluster": "RDS DB cluster",
+    "AWS::Lambda::Function": "Lambda function",
+    "AWS::SecretsManager::Secret": "Secrets Manager secret",
+    "AWS::ApiGateway::RestApi": "API Gateway REST API",
+    "AWS::ApiGatewayV2::Api": "API Gateway HTTP/WebSocket API",
+}
+
 
 def run_cfn_stack_checks(service: ExpectedService, aws: AwsFacade) -> list[CheckResult]:
     stack_name = service.identifiers.extra.get("stack_name") or service.name
@@ -24,7 +42,8 @@ def run_cfn_stack_checks(service: ExpectedService, aws: AwsFacade) -> list[Check
     status = str(described.get("StackStatus") or "")
     ok = status.endswith("_COMPLETE") and not status.startswith("ROLLBACK") and "FAILED" not in status
     outputs = described.get("Outputs") or []
-    return [
+
+    results = [
         CheckResult(
             check="CloudFormation stack exists",
             status=CheckStatus.PASS,
@@ -42,19 +61,82 @@ def run_cfn_stack_checks(service: ExpectedService, aws: AwsFacade) -> list[Check
             actual=status,
             evidence={"output_count": len(outputs)},
         ),
-        CheckResult(
-            check="CloudFormation stack has outputs",
-            status=CheckStatus.PASS if outputs else CheckStatus.INCONCLUSIVE,
-            resource=resource,
-            reason=(
-                f"Stack exposes {len(outputs)} output(s)"
-                if outputs
-                else "Stack has no outputs (may be expected for some stacks)"
-            ),
-            expected=">= 0 outputs",
-            actual={"Outputs": outputs[:20]},
-        ),
     ]
+
+    # Enumerate resources inside the stack and record their status
+    stack_resources = aws.list_cloudformation_stack_resources(stack_name)
+    if stack_resources:
+        failed_resources = [
+            r for r in stack_resources
+            if str(r.get("ResourceStatus") or "").endswith("_FAILED")
+        ]
+        results.append(
+            CheckResult(
+                check="CloudFormation stack resources healthy",
+                status=CheckStatus.PASS if not failed_resources else CheckStatus.FAIL,
+                resource=resource,
+                reason=(
+                    f"All {len(stack_resources)} resource(s) healthy"
+                    if not failed_resources
+                    else f"{len(failed_resources)} resource(s) in FAILED state"
+                ),
+                expected="No resources in *_FAILED state",
+                actual={
+                    "total": len(stack_resources),
+                    "failed": [
+                        {
+                            "LogicalId": r.get("LogicalResourceId"),
+                            "Type": r.get("ResourceType"),
+                            "Status": r.get("ResourceStatus"),
+                            "PhysicalId": r.get("PhysicalResourceId"),
+                        }
+                        for r in failed_resources
+                    ],
+                    "resource_types": list({r.get("ResourceType") for r in stack_resources}),
+                },
+            )
+        )
+        # Per-resource existence checks for key resource types
+        for r in stack_resources:
+            rtype = r.get("ResourceType") or ""
+            phys_id = r.get("PhysicalResourceId") or ""
+            logical_id = r.get("LogicalResourceId") or ""
+            rstatus = str(r.get("ResourceStatus") or "")
+            label = _CFN_RESOURCE_CHECK_MAP.get(rtype)
+            if not label or not phys_id:
+                continue
+            results.append(
+                CheckResult(
+                    check=f"Stack resource exists and deployed: {label}",
+                    status=CheckStatus.PASS if rstatus.endswith("_COMPLETE") else CheckStatus.FAIL,
+                    resource=f"cfn://{stack_name}/{logical_id}",
+                    reason=f"{rtype} '{phys_id}' status={rstatus}",
+                    expected="*_COMPLETE",
+                    actual={
+                        "LogicalId": logical_id,
+                        "PhysicalId": phys_id,
+                        "ResourceType": rtype,
+                        "ResourceStatus": rstatus,
+                    },
+                )
+            )
+    else:
+        results.append(
+            CheckResult(
+                check="CloudFormation stack has outputs",
+                status=CheckStatus.PASS if outputs else CheckStatus.INCONCLUSIVE,
+                resource=resource,
+                reason=(
+                    f"Stack exposes {len(outputs)} output(s)"
+                    if outputs
+                    else "Stack has no outputs (may be expected for some stacks)"
+                ),
+                expected=">= 0 outputs",
+                actual={"Outputs": outputs[:20]},
+            )
+        )
+
+    return results
 
 
 def run_ecs_cluster_checks(service: ExpectedService, aws: AwsFacade) -> list[CheckResult]:

@@ -62,7 +62,6 @@ def run_phase1(context: DeploymentContext, aws: AwsFacade, settings: dict[str, A
     mandatory_failed = bool(failed or not_found)
     coverage_complete = not missing
     healthy = not mandatory_failed and coverage_complete
-    phase2_required = mandatory_failed or bool(missing)
 
     return Phase1Result(
         DeploymentHealthy=healthy,
@@ -78,7 +77,6 @@ def run_phase1(context: DeploymentContext, aws: AwsFacade, settings: dict[str, A
             "start": context.verification_window.start,
             "end": context.verification_window.end,
         },
-        Phase2Required=phase2_required,
     )
 
 

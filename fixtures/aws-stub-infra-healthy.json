@@ -13,6 +13,45 @@
     "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack": {"StackName": "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
     "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack": {"StackName": "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []}
   },
+  "cloudformation_stack_resources": {
+    "ff-ml-slp-dlp-devsecops-internal-alb-stack": [
+      {"LogicalResourceId": "InternalALB", "PhysicalResourceId": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops-internal/abc", "ResourceType": "AWS::ElasticLoadBalancingV2::LoadBalancer", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-internet-alb-stack": [
+      {"LogicalResourceId": "InternetALB", "PhysicalResourceId": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0", "ResourceType": "AWS::ElasticLoadBalancingV2::LoadBalancer", "ResourceStatus": "UPDATE_COMPLETE"},
+      {"LogicalResourceId": "ALBListener", "PhysicalResourceId": "arn:aws:elasticloadbalancing:us-east-1:118153336476:listener/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0/fedff56582524a16", "ResourceType": "AWS::ElasticLoadBalancingV2::Listener", "ResourceStatus": "UPDATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-ecs-cluster-stack": [
+      {"LogicalResourceId": "ECSCluster", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-cluster", "ResourceType": "AWS::ECS::Cluster", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack": [
+      {"LogicalResourceId": "DLPAPIRepo", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-repository", "ResourceType": "AWS::ECR::Repository", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack": [
+      {"LogicalResourceId": "DLPProcessorRepo", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-processor-repository", "ResourceType": "AWS::ECR::Repository", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack": [
+      {"LogicalResourceId": "DLPExtractorRepo", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository", "ResourceType": "AWS::ECR::Repository", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack": [
+      {"LogicalResourceId": "DLPProcessorService", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-processor-service", "ResourceType": "AWS::ECS::Service", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack": [
+      {"LogicalResourceId": "DLPExtractorService", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-service", "ResourceType": "AWS::ECS::Service", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack": [
+      {"LogicalResourceId": "DLPProcessorBucket", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-processor", "ResourceType": "AWS::S3::Bucket", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack": [
+      {"LogicalResourceId": "DLPAPIService", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-dlp-service", "ResourceType": "AWS::ECS::Service", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack": [
+      {"LogicalResourceId": "SLPAPIRepo", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-slp-repository", "ResourceType": "AWS::ECR::Repository", "ResourceStatus": "CREATE_COMPLETE"}
+    ],
+    "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack": [
+      {"LogicalResourceId": "SLPAPIService", "PhysicalResourceId": "ff-ml-slp-dlp-devsecops-slp-service", "ResourceType": "AWS::ECS::Service", "ResourceStatus": "CREATE_COMPLETE"}
+    ]
+  },
   "ecs_clusters": {
     "ff-ml-slp-dlp-devsecops-cluster": {
       "clusterName": "ff-ml-slp-dlp-devsecops-cluster",

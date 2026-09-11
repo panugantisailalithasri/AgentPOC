@@ -59,6 +59,8 @@ class AwsFacade(Protocol):
 
     def describe_cloudformation_stack(self, stack_name: str) -> dict[str, Any] | None: ...
 
+    def list_cloudformation_stack_resources(self, stack_name: str) -> list[dict[str, Any]]: ...
+
     def describe_ecs_cluster(self, cluster: str) -> dict[str, Any] | None: ...
 
     def describe_ecr_repository(self, repository: str) -> dict[str, Any] | None: ...
@@ -137,6 +139,10 @@ class StubAwsFacade:
 
     def describe_cloudformation_stack(self, stack_name: str) -> dict[str, Any] | None:
         return (self.data.get("cloudformation_stacks") or {}).get(stack_name)
+
+    def list_cloudformation_stack_resources(self, stack_name: str) -> list[dict[str, Any]]:
+        resources = self.data.get("cloudformation_stack_resources") or {}
+        return list(resources.get(stack_name) or [])
 
     def describe_ecs_cluster(self, cluster: str) -> dict[str, Any] | None:
         return (self.data.get("ecs_clusters") or {}).get(cluster)
@@ -526,6 +532,28 @@ class LiveAwsFacade:
             code = (exc.response.get("Error") or {}).get("Code", "")
             if code in {"ValidationError", "StackNotFoundException"}:
                 return None
+            raise
+
+    def list_cloudformation_stack_resources(self, stack_name: str) -> list[dict[str, Any]]:
+        from botocore.exceptions import ClientError
+
+        try:
+            paginator = self.cfn.get_paginator("list_stack_resources")
+            pages = paginator.paginate(StackName=stack_name)
+            resources = []
+            for page in pages:
+                for item in page.get("StackResourceSummaries") or []:
+                    resources.append({
+                        "LogicalResourceId": item.get("LogicalResourceId"),
+                        "PhysicalResourceId": item.get("PhysicalResourceId"),
+                        "ResourceType": item.get("ResourceType"),
+                        "ResourceStatus": item.get("ResourceStatus"),
+                    })
+            return resources
+        except ClientError as exc:
+            code = (exc.response.get("Error") or {}).get("Code", "")
+            if code in {"ValidationError", "StackNotFoundException"}:
+                return []
             raise
 
     def describe_ecs_cluster(self, cluster: str) -> dict[str, Any] | None:

@@ -134,7 +134,7 @@ class CheckResult:
 
 
 @dataclass
-class Phase1Result:
+class VerificationResult:
     DeploymentHealthy: bool
     ServiceResults: list[dict[str, Any]]
     FailedChecks: list[dict[str, Any]]
@@ -145,38 +145,10 @@ class Phase1Result:
     ExpectedServices: list[dict[str, Any]]
     CoverageComplete: bool
     VerificationWindow: dict[str, str]
-    Phase2Required: bool
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
 
-@dataclass
-class Phase2Result:
-    InvestigationCompleted: bool
-    DynamicCheckResults: list[dict[str, Any]]
-    Evidence: dict[str, Any]
-    InvestigationSummary: str
-    AffectedServices: list[str]
-
-    def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
-
-
-@dataclass
-class Phase3Result:
-    OverallDeploymentStatus: str
-    AffectedServices: list[str]
-    RootCause: str
-    CorrelatedEvidence: list[str]
-    ObservedFacts: list[str]
-    InferredConclusions: list[str]
-    DeploymentRisk: str
-    RollbackRecommendation: str
-    SuggestedActions: list[str]
-    ConfidenceLevel: str
-    KnownUncertainties: list[str]
-    TeamsSummary: str
-
-    def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+# Keep alias so existing internal references compile without changes
+Phase1Result = VerificationResult
