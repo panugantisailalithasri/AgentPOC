@@ -313,7 +313,7 @@ def summarize_pipeline_deployment(payload: dict[str, Any], kind: DeploymentKind)
         "stages": payload.get("stages") or [r.get("stage") for r in releases],
         "release_ids": [r.get("release_id") for r in releases],
         "stack_names": stacks,
-        "resolved_from_iac": {
+        "resources_from_variables": {
             "cluster": _first_value(variables, suffixes=("ECSClusterName",)),
             "ecs_services": [
                 str(v) for k, v in variables.items() if k.endswith("ClusterServiceName")
@@ -336,12 +336,6 @@ def summarize_pipeline_deployment(payload: dict[str, Any], kind: DeploymentKind)
                 if "CloudFrontDistributionId" in k or k.endswith("DistributionId")
             ],
         },
-        "notes": [
-            "sha256 digests are not stored in ADO IaC variable groups; "
-            "verifier resolves them from running ECS tasks / ECR when needed.",
-            "ADO Library variable groups are not readable via current MCP; "
-            "use infra_export.variables populated by the Deployment Agent from those groups.",
-        ],
     }
 
 

@@ -117,11 +117,10 @@ def normalize_deployment_agent_output(payload: dict[str, Any]) -> DeploymentCont
     )
 
     summary = summarize_pipeline_deployment(payload, kind)
-    discovery_notes.extend(summary.get("notes") or [])
     discovery_notes.append(
         f"Pipeline `{summary.get('pipeline_name')}` classified as {kind.value}; "
         f"stacks={len(summary.get('stack_names') or [])}, "
-        f"ecs_services={summary.get('resolved_from_iac', {}).get('ecs_services')}"
+        f"ecs_services={summary.get('resources_from_variables', {}).get('ecs_services')}"
     )
 
     return DeploymentContext(

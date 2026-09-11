@@ -216,8 +216,8 @@ def run_ecs_checks(
         if (service.deployment_action or {}).get("mode") in {"infra_inventory", "fe_deploy"}:
             image_status = CheckStatus.NOT_APPLICABLE
             image_reason = (
-                "IaC variables provide cluster/service/task revision but not sha256 digests; "
-                "digest match skipped for infra inventory"
+                "No expected image digest in Deployment Agent output for this resource; "
+                "digest check skipped"
             )
         elif (service.deployment_action or {}).get("resolve_digest_from_runtime") and runtime_digests:
             # BE path without DA digest: prove tasks expose digests (actual pin comes from DA/CI).
