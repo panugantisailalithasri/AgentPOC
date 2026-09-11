@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.2",
+  "written_at": "2026-08-20T06:18:00Z",
+  "work_item_id": null,
+  "master_build_id": "POC-DEVSECOPS-001",
+  "version": null,
+  "session_id": null,
+  "pipeline_name": "FreyaFusion-Cont-SCCM-API-Service",
+  "modules": [
+    "Cont",
+    "SCCM"
+  ],
+  "stages": [
+    "devsecops"
+  ],
+  "deployment_mode": "bridge",
+  "outcome": {
+    "deployed": true,
+    "skipped": false,
+    "escalated": false,
+    "eligible": true,
+    "reason_code": "plain_code_confirmed",
+    "reason_detail": "ok",
+    "completion_message": "Deployment completed and is ready for verification."
+  },
+  "qualification_gate": {
+    "ready_for_qualification": true,
+    "ready_for_verification_agent": true,
+    "release_succeeded": true,
+    "runtime_healthy": true,
+    "preflight_blocked": false,
+    "stages": [
+      "devsecops"
+    ],
+    "blocking_reason": ""
+  },
+  "environment_contract": {
+    "schema_version": "1.0",
+    "cloudformation_stack_names": [],
+    "cloudformation_stacks": [],
+    "stack_outputs": {},
+    "endpoints": [],
+    "resources": [],
+    "artifacts": [],
+    "config_keys": [],
+    "source": {
+      "release_ids": [
+        "FreyaFusion-Cont-SCCM-API-Service"
+      ],
+      "pipeline_names": [
+        "FreyaFusion-Cont-SCCM-API-Service"
+      ]
+    }
+  },
+  "cloudformation_stacks": [],
+  "resources": [],
+  "artifacts": [],
+  "config": {
+    "keys": [],
+    "values": {},
+    "transform_validated": false
+  },
+  "releases": [],
+  "verifications": [],
+  "targets": [],
+  "process_trace": [],
+  "failure_report": null,
+  "deployment_id": "ADO-RELEASE-POC-001",
+  "release_id": "FreyaFusion-Cont-SCCM-API-Service",
+  "pipeline_run_id": "POC-DEVSECOPS-001",
+  "application": "FreyaFusion-Cont-SCCM",
+  "environment": "devsecops",
+  "deployment_status": "SUCCEEDED",
+  "started_at": "2026-08-20T06:00:00Z",
+  "completed_at": "2026-08-20T06:18:00Z",
+  "verification_window": {
+    "start": "2026-08-15T08:09:00Z",
+    "end": "2026-08-15T08:11:00Z"
+  },
+  "aws": {
+    "account_id": "110133336476",
+    "region": "us-east-1",
+    "service_connection": "AWS_FreyDevOps_CIcd-automation-Freyr-Unified-RIMS"
+  },
+  "services": [
+    {
+      "service_type": "ECS",
+      "name": "cont-sccm-api",
+      "identifiers": {
+        "cluster": "ff-cont-sccm-devsecops-cluster",
+        "cluster_source": "Confirmed from ECS console cluster list.",
+        "service_name": "ff-cont-sccm-devsecops-api-service",
+        "service_source": "$(ECSName-Cont-SCCM-Service) -> ff-cont-sccm-devsecops-api-ecs-stack-ClusterServiceName",
+        "task_definition_family": "ff-cont-sccm-devsecops-api-task-def",
+        "task_definition_revision": "8",
+        "log_group": "/ecs/ff-cont-sccm-devsecops-api-task-def"
+      },
+      "deployment_action": {
+        "api": "ecs.update-service",
+        "force_new_deployment": true
+      },
+      "expected_artifact": {
+        "image_repository": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api",
+        "image_digest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d"
+      }
+    }
+  ],
+  "smoke_tests": [],
+  "deployment_agent_checks": []
+}

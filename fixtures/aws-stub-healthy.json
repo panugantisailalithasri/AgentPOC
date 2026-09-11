@@ -1,0 +1,124 @@
+{
+  "ecs_service_deployments": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": [
+      {
+        "serviceDeploymentArn": "arn:aws:ecs:us-east-1:110133336476:service-deployment/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service/example-success",
+        "serviceArn": "arn:aws:ecs:us-east-1:110133336476:service/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service",
+        "clusterArn": "arn:aws:ecs:us-east-1:110133336476:cluster/ff-cont-sccm-devsecops-cluster",
+        "startedAt": "2026-08-15T08:09:09.518Z",
+        "createdAt": "2026-08-15T08:09:09.518Z",
+        "finishedAt": "2026-08-15T08:10:04.527Z",
+        "targetServiceRevisionArn": "arn:aws:ecs:us-east-1:110133336476:service-revision/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service/3496533024407841493",
+        "status": "SUCCESSFUL",
+        "statusReason": "ECS service deployment completed successfully."
+      }
+    ]
+  },
+  "ecs_services": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": {
+      "status": "ACTIVE",
+      "desiredCount": 2,
+      "runningCount": 2,
+      "pendingCount": 0,
+      "taskDefinition": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+      "deployments": [
+        {
+          "status": "PRIMARY",
+          "rolloutState": "COMPLETED",
+          "desiredCount": 2,
+          "runningCount": 2,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "taskDefinition": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8"
+        }
+      ],
+      "events": [
+        {
+          "createdAt": "2026-08-20T06:10:00Z",
+          "message": "(service ff-cont-sccm-devsecops-api-service) has reached a steady state."
+        }
+      ],
+      "loadBalancers": [
+        {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:110133336476:targetgroup/cont-sccm-api/abc123"
+        }
+      ]
+    }
+  },
+  "ecs_tasks": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": [
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:110133336476:task/cluster/111",
+        "lastStatus": "RUNNING",
+        "desiredStatus": "RUNNING",
+        "healthStatus": "HEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+        "startedAt": "2026-08-20T06:08:00Z",
+        "containers": [
+          {
+            "name": "cont-sccm-api-container",
+            "lastStatus": "RUNNING",
+            "healthStatus": "HEALTHY",
+            "exitCode": null,
+            "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest",
+            "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d"
+          }
+        ],
+        "stoppedReason": null,
+        "stopCode": null
+      },
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:110133336476:task/cluster/222",
+        "lastStatus": "RUNNING",
+        "desiredStatus": "RUNNING",
+        "healthStatus": "HEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+        "startedAt": "2026-08-20T06:08:10Z",
+        "containers": [
+          {
+            "name": "cont-sccm-api-container",
+            "lastStatus": "RUNNING",
+            "healthStatus": "HEALTHY",
+            "exitCode": null,
+            "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest",
+            "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d"
+          }
+        ],
+        "stoppedReason": null,
+        "stopCode": null
+      }
+    ]
+  },
+  "task_definitions": {
+    "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8": {
+      "family": "ff-cont-sccm-devsecops-api-task-def",
+      "revision": 8,
+      "containerDefinitions": [
+        {
+          "name": "cont-sccm-api-container",
+          "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest"
+        }
+      ]
+    }
+  },
+  "target_health": {
+    "arn:aws:elasticloadbalancing:us-east-1:110133336476:targetgroup/cont-sccm-api/abc123": [
+      { "target": "10.0.1.10:8080", "state": "healthy", "reason": null, "description": null },
+      { "target": "10.0.1.11:8080", "state": "healthy", "reason": null, "description": null }
+    ]
+  },
+  "ecr_images": {
+    "ff-cont-sccm-devsecops-api@sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d": {
+      "repositoryName": "ff-cont-sccm-devsecops-api",
+      "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d",
+      "imagePushedAt": "2026-08-15T08:05:00Z",
+      "imageSizeInBytes": 145000000,
+      "imageTags": ["latest"]
+    }
+  },
+  "logs": [],
+  "metrics": {
+    "CPUUtilization": 22.0,
+    "MemoryUtilization": 41.0
+  }
+}

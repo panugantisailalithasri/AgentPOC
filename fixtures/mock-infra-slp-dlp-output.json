@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.4",
+  "written_at": "2026-09-09T13:55:34.592907+00:00",
+  "deployment_id": "deploy:306262:wi-306262:rel-455382:sess-none",
+  "work_item_id": 306262,
+  "master_build_id": "306262",
+  "version": "main",
+  "session_id": null,
+  "title": "Deploy SLP-DLP",
+  "pipeline_name": "ML-SLP-DLP-Infra-Automation",
+  "pipeline_definition_id": 379,
+  "modules": [],
+  "branches": [
+    "main"
+  ],
+  "stages": [
+    "devsecops"
+  ],
+  "deployment_mode": "bridge",
+  "outcome": {
+    "deployed": false,
+    "skipped": false,
+    "escalated": true,
+    "eligible": true,
+    "reason_code": "plain_code_confirmed",
+    "reason_detail": "Plain pipeline deployment concluded from work-item summary; wiki skipped.",
+    "completion_message": "Held: pipeline succeeded but runtime verification failed."
+  },
+  "qualification_gate": {
+    "ready_for_qualification": false,
+    "ready_for_verification_agent": true,
+    "release_succeeded": true,
+    "runtime_healthy": false,
+    "preflight_blocked": false,
+    "stages": [
+      "devsecops"
+    ],
+    "blocking_reason": "Held: pipeline succeeded but runtime verification failed."
+  },
+  "verification_window": {
+    "start": "2026-09-09T12:58:14.533526+00:00",
+    "end": "2026-09-09T13:08:59.077620+00:00"
+  },
+  "aws": {
+    "account_id": "118153336476",
+    "region": "us-east-1",
+    "service_connection": "AWS_FreyrDevSecOps_cicd-automation-Freyr-Unified-RIMS"
+  },
+  "services": [
+    {
+      "service_type": "ecs",
+      "cluster_name": "default",
+      "service_name": "ML-SLP-DLP-Infra-Automation",
+      "task_definition_family": null,
+      "task_definition_revision": null,
+      "expected_image_digest": null,
+      "target_id": "default/ML-SLP-DLP-Infra-Automation",
+      "healthy": false,
+      "version_matches": false,
+      "stage": "devsecops"
+    }
+  ],
+  "infra_export": {
+    "aws_region": "us-east-1",
+    "aws_service_connection": "AWS_FreyrDevSecOps_cicd-automation-Freyr-Unified-RIMS",
+    "iac_variable_group": "ML-SLP-DLP-devsecops-IaC-Variables",
+    "aws_infra_info_group": "ML-SLP-DLP-devsecops-AWS infra info",
+    "common_library_group": "ML-SLP-DLP-Common-Library",
+    "stack_names": [
+      "ff-ml-slp-dlp-devsecops-internal-alb-stack",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack",
+      "ff-ml-slp-dlp-devsecops-ecs-cluster-stack",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack"
+    ],
+    "variables": {
+      "Createdby": "CICD_Automation_pipeline",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerARN": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-ALBDNS": "ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-InternetALBSecurityGroupId": "sg-07e9157a12f3fbb9d",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-WAFLogGroupARN": "arn:aws:logs:us-east-1:118153336476:log-group:aws-waf-logs-ff-ml-slp-dlp-devsecops-alb:*",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerDNS": "http://ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com",
+      "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterArn": "arn:aws:ecs:us-east-1:118153336476:cluster/ff-ml-slp-dlp-devsecops-cluster",
+      "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterName": "ff-ml-slp-dlp-devsecops-cluster",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-repository",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-repository",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-HTTPSListenerArn": "arn:aws:elasticloadbalancing:us-east-1:118153336476:listener/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0/fedff56582524a16",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-ClusterServiceName": "ff-ml-slp-dlp-devsecops-dlp-service",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-slp-repository",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-slp-repository",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-ClusterServiceName": "ff-ml-slp-dlp-devsecops-slp-service",
+      "ff-ml-slp-dlp-devsecops-internet-alb-stack-LoadBalancerName": "ff-ml-slp-dlp-devsecops",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-processor-repository",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-processor-repository",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-ContainerName": "ff-ml-slp-dlp-devsecops-dlp-processor-container",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-processor-task-definition:4",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinitionName": "ff-ml-slp-dlp-devsecops-dlp-processor-task-definition",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-ContainerName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-container",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition:2",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinitionName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketName": "ff-ml-slp-dlp-devsecops-dlp-processor",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketARN": "arn:aws:s3:::ff-ml-slp-dlp-devsecops-dlp-processor"
+    }
+  },
+  "environment_contract": {
+    "schema_version": "1.3",
+    "stack_outputs": {
+      "Createdby": "CICD_Automation_pipeline",
+      "ApplicationLoadBalancerARN": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0",
+      "ALBDNS": "ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com",
+      "InternetALBSecurityGroupId": "sg-07e9157a12f3fbb9d",
+      "WAFLogGroupARN": "arn:aws:logs:us-east-1:118153336476:log-group:aws-waf-logs-ff-ml-slp-dlp-devsecops-alb:*",
+      "ApplicationLoadBalancerDNS": "http://ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com",
+      "ECSClusterArn": "arn:aws:ecs:us-east-1:118153336476:cluster/ff-ml-slp-dlp-devsecops-cluster",
+      "ECSClusterName": "ff-ml-slp-dlp-devsecops-cluster",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-repository",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-slp-repository",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-processor-repository",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-RepoName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-repository",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-slp-repository",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-processor-repository",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-ECRRepoURI": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository",
+      "HTTPSListenerArn": "arn:aws:elasticloadbalancing:us-east-1:118153336476:listener/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0/fedff56582524a16",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-ClusterServiceName": "ff-ml-slp-dlp-devsecops-dlp-service",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-ClusterServiceName": "ff-ml-slp-dlp-devsecops-slp-service",
+      "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6",
+      "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-processor-task-definition:4",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition:2",
+      "LoadBalancerName": "ff-ml-slp-dlp-devsecops",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-ContainerName": "ff-ml-slp-dlp-devsecops-dlp-processor-container",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-ContainerName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-container",
+      "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinitionName": "ff-ml-slp-dlp-devsecops-dlp-processor-task-definition",
+      "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinitionName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition",
+      "S3BucketName": "ff-ml-slp-dlp-devsecops-dlp-processor",
+      "S3BucketARN": "arn:aws:s3:::ff-ml-slp-dlp-devsecops-dlp-processor"
+    },
+    "endpoints": [
+      {
+        "name": "ecs_service",
+        "id": "default/ML-SLP-DLP-Infra-Automation",
+        "cluster": "default",
+        "service": "ML-SLP-DLP-Infra-Automation"
+      }
+    ],
+    "config_keys": [],
+    "source": {
+      "release_ids": [
+        455382
+      ],
+      "pipeline_names": [
+        "ML-SLP-DLP-Infra-Automation"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "ecs_service",
+      "id": "default/ML-SLP-DLP-Infra-Automation",
+      "cluster": "default",
+      "service": "ML-SLP-DLP-Infra-Automation",
+      "stage": "devsecops",
+      "healthy": false,
+      "task_id": null,
+      "rollout_state": null,
+      "running_count": 0,
+      "desired_count": 0,
+      "task_definition_family": null,
+      "task_definition_revision": null,
+      "expected_image_digest": null
+    }
+  ],
+  "artifacts": [],
+  "config": {
+    "keys": [],
+    "values": {},
+    "transform_validated": false
+  },
+  "releases": [
+    {
+      "release_id": 455382,
+      "release_name": "Release-49",
+      "pipeline_id": 379,
+      "pipeline_name": "ML-SLP-DLP-Infra-Automation",
+      "stage": "devsecops",
+      "branch": "main",
+      "environment_id": 753,
+      "environment_name": "devsecops",
+      "release_environment_id": 1010772,
+      "status": "succeeded",
+      "started_at": "2026-09-09T12:58:14.533526+00:00",
+      "finished_at": "2026-09-09T13:08:54.283309+00:00",
+      "task_logs_summary": "Environment devsecops: status=succeeded\n  - step: succeeded"
+    }
+  ],
+  "verifications": [
+    {
+      "deployment_type": "ecs",
+      "target_id": "default/ML-SLP-DLP-Infra-Automation",
+      "healthy": false,
+      "version_matches": false,
+      "evidence": {
+        "verificationSource": "pipeline_log",
+        "runningCount": "0",
+        "desiredCount": "0",
+        "rolloutState": "",
+        "newTaskId": "",
+        "steadyState": "false",
+        "awsRegion": "us-east-1",
+        "ecsCluster": "default",
+        "ecsService": "ML-SLP-DLP-Infra-Automation"
+      },
+      "verified_at": "2026-09-09T13:08:59.077620+00:00",
+      "detail": "ECS default/ML-SLP-DLP-Infra-Automation: running=0/0, rollout=unknown, new_task=none, steady_state=False"
+    }
+  ],
+  "targets": [],
+  "process_trace": [
+    {
+      "step": "Intake",
+      "message": "Loading work item #306262",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Intake",
+      "message": "Work item loaded and normalized",
+      "outcome": "ok",
+      "detail": "pipeline=ML-SLP-DLP-Infra-Automation, stages=devsecops"
+    },
+    {
+      "step": "Validation",
+      "message": "Running eligibility rules engine",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Submitter check",
+      "message": "Checking authorization for Ashwin.Manthena@FreyrSolutions.com",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Submitter check",
+      "message": "Submitter is authorized",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Deployment mode",
+      "message": "Mode is bridge",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Deployment mode",
+      "message": "Bridge deployment mode accepted",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Commit pin check",
+      "message": "No commit pin requested",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Wiki review",
+      "message": "No wiki URLs linked on work item",
+      "outcome": "skip",
+      "detail": ""
+    },
+    {
+      "step": "Summary fallback",
+      "message": "Wiki unavailable; analyzing work-item title, description, and comments",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Summary fallback",
+      "message": "pipeline matched and deployment targets identified with no changes detected",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Summary fallback",
+      "message": "Agent concluded plain pipeline deployment; wiki requirement skipped",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Plain-code gate",
+      "message": "Confirmed via work-item summary; wiki skipped",
+      "outcome": "ok",
+      "detail": "pipeline matched and deployment targets identified with no changes detected"
+    },
+    {
+      "step": "Documentation check",
+      "message": "Checking stage-required attachments",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Documentation check",
+      "message": "Required documentation present",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Security scan check",
+      "message": "No unauthorized scan findings",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Pipeline match",
+      "message": "Matched Classic Release pipeline ML-SLP-DLP-Infra-Automation",
+      "outcome": "ok",
+      "detail": "definition_id=379"
+    },
+    {
+      "step": "Final verdict",
+      "message": "Plain pipeline deployment confirmed",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Notification",
+      "message": "Posting triage summary to Teams",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Pipeline confirmation",
+      "message": "Human approved description pipeline `ML-SLP-DLP-Infra-Automation`",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Deploy",
+      "message": "Starting deployment to stage devsecops",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Work item",
+      "message": "State set to Committed for WI #306262",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Release trigger",
+      "message": "Creating release for ML-SLP-DLP-Infra-Automation -> devsecops",
+      "outcome": "info",
+      "detail": "definition_id=379, branch=main"
+    },
+    {
+      "step": "Release trigger",
+      "message": "Pinned release artifacts to requested branch",
+      "outcome": "ok",
+      "detail": "_Platform=refs/heads/master@8fdf73f3aa6b54207991baca73b6ee7837f8e335, main_parameter=refs/heads/main@0169a617db8ffb789f9d1bea5bad72203e864e6d, main_templates=refs/heads/main@789cece90956fb894d02ec80bb27e9c4b53b8c4b, prod_parameter=refs/heads/main@0169a617db8ffb789f9d1bea5bad72203e864e6d, prod_templates=refs/heads/main@789cece90956fb894d02ec80bb27e9c4b53b8c4b"
+    },
+    {
+      "step": "Release trigger",
+      "message": "Release 455382 created",
+      "outcome": "ok",
+      "detail": "Release-49"
+    },
+    {
+      "step": "Release trigger",
+      "message": "Deploying stage devsecops",
+      "outcome": "info",
+      "detail": "release_environment_id=1010772"
+    },
+    {
+      "step": "Release trigger",
+      "message": "Stage devsecops deployment started",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Work item",
+      "message": "Discussion: deployment in progress (Release-49)",
+      "outcome": "ok",
+      "detail": ""
+    },
+    {
+      "step": "Monitor",
+      "message": "Watching release 455382 (devsecops)",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Monitor",
+      "message": "Environment status: queued",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Monitor",
+      "message": "Environment status: inProgress",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Monitor",
+      "message": "Environment status: succeeded",
+      "outcome": "info",
+      "detail": ""
+    },
+    {
+      "step": "Monitor",
+      "message": "Pipeline environment succeeded",
+      "outcome": "ok",
+      "detail": "Environment devsecops: status=succeeded\n  - step: succeeded"
+    },
+    {
+      "step": "AWS verify",
+      "message": "ECS default/ML-SLP-DLP-Infra-Automation: running=0/0, rollout=unknown, new_task=none, steady_state=False",
+      "outcome": "fail",
+      "detail": ""
+    },
+    {
+      "step": "Deploy",
+      "message": "Runtime verification failed: ECS default/ML-SLP-DLP-Infra-Automation: running=0/0, rollout=unknown, new_task=none, steady_state=False",
+      "outcome": "fail",
+      "detail": ""
+    },
+    {
+      "step": "Notification",
+      "message": "Deployment completed posted to work item (Done/Completed) and Teams (skipped)",
+      "outcome": "ok",
+      "detail": "Requester: Ashwin Kumar Manthena"
+    }
+  ],
+  "failure_report": null
+}

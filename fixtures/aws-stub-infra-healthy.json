@@ -1,0 +1,155 @@
+{
+  "cloudformation_stacks": {
+    "ff-ml-slp-dlp-devsecops-internal-alb-stack": {"StackName": "ff-ml-slp-dlp-devsecops-internal-alb-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-internet-alb-stack": {"StackName": "ff-ml-slp-dlp-devsecops-internet-alb-stack", "StackStatus": "UPDATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-ecs-cluster-stack": {"StackName": "ff-ml-slp-dlp-devsecops-ecs-cluster-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack": {"StackName": "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack": {"StackName": "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []},
+    "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack": {"StackName": "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack", "StackStatus": "CREATE_COMPLETE", "Outputs": []}
+  },
+  "ecs_clusters": {
+    "ff-ml-slp-dlp-devsecops-cluster": {
+      "clusterName": "ff-ml-slp-dlp-devsecops-cluster",
+      "status": "ACTIVE",
+      "activeServicesCount": 2,
+      "runningTasksCount": 2
+    }
+  },
+  "ecr_repositories": {
+    "ff-ml-slp-dlp-devsecops-dlp-repository": {
+      "repositoryName": "ff-ml-slp-dlp-devsecops-dlp-repository",
+      "repositoryUri": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-repository"
+    },
+    "ff-ml-slp-dlp-devsecops-slp-repository": {
+      "repositoryName": "ff-ml-slp-dlp-devsecops-slp-repository",
+      "repositoryUri": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-slp-repository"
+    },
+    "ff-ml-slp-dlp-devsecops-dlp-processor-repository": {
+      "repositoryName": "ff-ml-slp-dlp-devsecops-dlp-processor-repository",
+      "repositoryUri": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-processor-repository"
+    },
+    "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository": {
+      "repositoryName": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository",
+      "repositoryUri": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository"
+    }
+  },
+  "load_balancers": {
+    "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0": {
+      "LoadBalancerArn": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0",
+      "DNSName": "ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com",
+      "State": {"Code": "active"}
+    }
+  },
+  "s3_buckets": {
+    "ff-ml-slp-dlp-devsecops-dlp-processor": {"Name": "ff-ml-slp-dlp-devsecops-dlp-processor"}
+  },
+  "ecr_image_lists": {
+    "ff-ml-slp-dlp-devsecops-dlp-repository": [
+      {"imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "imageTags": ["latest"], "imagePushedAt": "2026-09-09T13:01:00Z"}
+    ],
+    "ff-ml-slp-dlp-devsecops-slp-repository": [
+      {"imageDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "imageTags": ["latest"], "imagePushedAt": "2026-09-09T13:01:30Z"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlp-processor-repository": [
+      {"imageDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "imageTags": ["latest"], "imagePushedAt": "2026-09-09T13:02:00Z"}
+    ],
+    "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository": [
+      {"imageDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "imageTags": ["latest"], "imagePushedAt": "2026-09-09T13:02:30Z"}
+    ]
+  },
+  "alb_listeners": {
+    "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0": [
+      {"ListenerArn": "arn:aws:elasticloadbalancing:us-east-1:118153336476:listener/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0/fedff56582524a16", "Port": 443, "Protocol": "HTTPS"}
+    ]
+  },
+  "alb_target_groups": {
+    "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0": [
+      {"TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:118153336476:targetgroup/ff-ml-slp-dlp/abc123", "TargetGroupName": "ff-ml-slp-dlp", "Port": 8080, "HealthCheckPath": "/health"}
+    ]
+  },
+  "target_health": {
+    "arn:aws:elasticloadbalancing:us-east-1:118153336476:targetgroup/ff-ml-slp-dlp/abc123": [
+      {"Target": {"Id": "i-123"}, "TargetHealth": {"State": "healthy"}}
+    ]
+  },
+  "ecs_service_deployments": {
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-dlp-service": [
+      {
+        "status": "SUCCESSFUL",
+        "createdAt": "2026-09-09T13:00:00Z",
+        "startedAt": "2026-09-09T13:00:00Z",
+        "finishedAt": "2026-09-09T13:05:00Z"
+      }
+    ],
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-slp-service": [
+      {
+        "status": "SUCCESSFUL",
+        "createdAt": "2026-09-09T13:01:00Z",
+        "startedAt": "2026-09-09T13:01:00Z",
+        "finishedAt": "2026-09-09T13:06:00Z"
+      }
+    ]
+  },
+  "ecs_services": {
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-dlp-service": {
+      "status": "ACTIVE",
+      "desiredCount": 1,
+      "runningCount": 1,
+      "pendingCount": 0,
+      "taskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6",
+      "deployments": [{"status": "PRIMARY", "rolloutState": "COMPLETED", "desiredCount": 1, "runningCount": 1, "pendingCount": 0, "failedTasks": 0}],
+      "events": [{"createdAt": "2026-09-09T13:05:00Z", "message": "has reached a steady state."}],
+      "loadBalancers": []
+    },
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-slp-service": {
+      "status": "ACTIVE",
+      "desiredCount": 1,
+      "runningCount": 1,
+      "pendingCount": 0,
+      "taskDefinition": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3",
+      "deployments": [{"status": "PRIMARY", "rolloutState": "COMPLETED", "desiredCount": 1, "runningCount": 1, "pendingCount": 0, "failedTasks": 0}],
+      "events": [{"createdAt": "2026-09-09T13:06:00Z", "message": "has reached a steady state."}],
+      "loadBalancers": []
+    }
+  },
+  "ecs_tasks": {
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-dlp-service": [
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:118153336476:task/cluster/dlp1",
+        "lastStatus": "RUNNING",
+        "desiredStatus": "RUNNING",
+        "healthStatus": "HEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6",
+        "startedAt": "2026-09-09T13:02:00Z",
+        "containers": [{"name": "dlp", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "image": "x", "imageDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}]
+      }
+    ],
+    "ff-ml-slp-dlp-devsecops-cluster|ff-ml-slp-dlp-devsecops-slp-service": [
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:118153336476:task/cluster/slp1",
+        "lastStatus": "RUNNING",
+        "desiredStatus": "RUNNING",
+        "healthStatus": "HEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3",
+        "startedAt": "2026-09-09T13:03:00Z",
+        "containers": [{"name": "slp", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "image": "x", "imageDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}]
+      }
+    ]
+  },
+  "task_definitions": {
+    "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6": {
+      "revision": 6,
+      "containerDefinitions": [{"name": "dlp", "image": "x"}]
+    },
+    "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3": {
+      "revision": 3,
+      "containerDefinitions": [{"name": "slp", "image": "x"}]
+    }
+  }
+}

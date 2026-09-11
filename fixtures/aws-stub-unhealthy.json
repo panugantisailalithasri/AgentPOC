@@ -1,0 +1,139 @@
+{
+  "ecs_service_deployments": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": [
+      {
+        "serviceDeploymentArn": "arn:aws:ecs:us-east-1:110133336476:service-deployment/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service/example-failure",
+        "serviceArn": "arn:aws:ecs:us-east-1:110133336476:service/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service",
+        "clusterArn": "arn:aws:ecs:us-east-1:110133336476:cluster/ff-cont-sccm-devsecops-cluster",
+        "startedAt": "2026-08-15T08:09:09.518Z",
+        "createdAt": "2026-08-15T08:09:09.518Z",
+        "finishedAt": null,
+        "targetServiceRevisionArn": "arn:aws:ecs:us-east-1:110133336476:service-revision/ff-cont-sccm-devsecops-cluster/ff-cont-sccm-devsecops-api-service/3496533024407841493",
+        "status": "IN_PROGRESS",
+        "statusReason": "The service deployment has not reached a successful terminal state."
+      }
+    ]
+  },
+  "ecs_services": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": {
+      "status": "ACTIVE",
+      "desiredCount": 2,
+      "runningCount": 1,
+      "pendingCount": 0,
+      "taskDefinition": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+      "deployments": [
+        {
+          "status": "PRIMARY",
+          "rolloutState": "IN_PROGRESS",
+          "desiredCount": 2,
+          "runningCount": 1,
+          "pendingCount": 0,
+          "failedTasks": 1,
+          "taskDefinition": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8"
+        }
+      ],
+      "events": [
+        {
+          "createdAt": "2026-08-20T06:12:00Z",
+          "message": "(service ff-cont-sccm-devsecops-api-service) was unable to place a task."
+        },
+        {
+          "createdAt": "2026-08-20T06:11:00Z",
+          "message": "(service ff-cont-sccm-devsecops-api-service) (task 333) (instance i-1) (port 8080) is unhealthy in (target-group cont-sccm-api) due to (reason Health checks failed)."
+        }
+      ],
+      "loadBalancers": [
+        {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:110133336476:targetgroup/cont-sccm-api/abc123"
+        }
+      ]
+    }
+  },
+  "ecs_tasks": {
+    "ff-cont-sccm-devsecops-cluster|ff-cont-sccm-devsecops-api-service": [
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:110133336476:task/cluster/111",
+        "lastStatus": "RUNNING",
+        "desiredStatus": "RUNNING",
+        "healthStatus": "HEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+        "startedAt": "2026-08-20T06:08:00Z",
+        "containers": [
+          {
+            "name": "cont-sccm-api-container",
+            "lastStatus": "RUNNING",
+            "healthStatus": "HEALTHY",
+            "exitCode": null,
+            "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest",
+            "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d"
+          }
+        ],
+        "stoppedReason": null,
+        "stopCode": null
+      },
+      {
+        "taskArn": "arn:aws:ecs:us-east-1:110133336476:task/cluster/333",
+        "lastStatus": "STOPPED",
+        "desiredStatus": "STOPPED",
+        "healthStatus": "UNHEALTHY",
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8",
+        "startedAt": "2026-08-20T06:09:00Z",
+        "stoppedAt": "2026-08-20T06:11:00Z",
+        "containers": [
+          {
+            "name": "cont-sccm-api-container",
+            "lastStatus": "STOPPED",
+            "healthStatus": "UNHEALTHY",
+            "exitCode": 1,
+            "reason": "Essential container in task exited",
+            "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest",
+            "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d"
+          }
+        ],
+        "stoppedReason": "Essential container in task exited",
+        "stopCode": "EssentialContainerExited"
+      }
+    ]
+  },
+  "task_definitions": {
+    "arn:aws:ecs:us-east-1:110133336476:task-definition/ff-cont-sccm-devsecops-api-task-def:8": {
+      "family": "ff-cont-sccm-devsecops-api-task-def",
+      "revision": 8,
+      "containerDefinitions": [
+        {
+          "name": "cont-sccm-api-container",
+          "image": "118133336476.dkr.ecr.us-east-1.amazonaws.com/ff-cont-sccm-devsecops-api:latest"
+        }
+      ]
+    }
+  },
+  "target_health": {
+    "arn:aws:elasticloadbalancing:us-east-1:110133336476:targetgroup/cont-sccm-api/abc123": [
+      { "target": "10.0.1.10:8080", "state": "healthy", "reason": null, "description": null },
+      { "target": "10.0.1.12:8080", "state": "unhealthy", "reason": "Target.FailedHealthChecks", "description": "Health checks failed" }
+    ]
+  },
+  "ecr_images": {
+    "ff-cont-sccm-devsecops-api@sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d": {
+      "repositoryName": "ff-cont-sccm-devsecops-api",
+      "imageDigest": "sha256:de7be30854ba5b4057e6f8f04ea015e6ce931d020b80be0daf6ae56046c3f53d",
+      "imagePushedAt": "2026-08-15T08:05:00Z",
+      "imageSizeInBytes": 145000000,
+      "imageTags": ["latest"]
+    }
+  },
+  "logs": [
+    {
+      "timestamp": "2026-08-20T06:10:45Z",
+      "message": "ERROR org.springframework.boot.SpringApplication - Application run failed"
+    },
+    {
+      "timestamp": "2026-08-20T06:10:45Z",
+      "message": "Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource': Could not connect to database"
+    }
+  ],
+  "metrics": {
+    "CPUUtilization": 8.0,
+    "MemoryUtilization": 12.0
+  }
+}

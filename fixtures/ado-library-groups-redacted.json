@@ -1,0 +1,2290 @@
+{
+  "project": "Freyr-Unified-RIMS",
+  "groups": [
+    {
+      "id": 791,
+      "name": "sriharislpdlp",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_FreyaFusion-SQA_cicd_automation_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::558053703506:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpextractor-S3-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpprocessor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpextractor-ecs-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpprocessor-ecs-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "ff-sqa-dlp-file-processor-task-def"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-sqa-vpc-stack-DBSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-sqa-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpextractor-ecs-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 777,
+      "name": "ML-SLP-DLP-qa-AWS infra info -QA",
+      "variable_count": 19,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "ECRDLPApiServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "FF-Env",
+        "FF-Env-Domain",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "qarelease"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_OneRIM-ML-Dev_ecr_cicd_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::852554894882:role/CloudFormation-Assumed-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-cluster"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-repository"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-slp-repository"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-service"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-slp-service"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "f-ml-slp-dlp-qa-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "f-ml-slp-dlp-qa-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "sg-093ed52494a71b989"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "subnet-0cbcba29cf260bc77"
+        }
+      }
+    },
+    {
+      "id": 776,
+      "name": "ML-SLP-DLP-AWS infra info -QA",
+      "variable_count": 29,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "ECRDLPApiServiceName",
+        "ECRDLPApiZipExtractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "ECS_CLUSTER_NAME",
+        "FF-Env",
+        "FF-Env-Domain",
+        "FILE_PROCESSOR_BUCKET_NAME",
+        "FILE_PROCESSOR_ECS_CONTAINER_NAME",
+        "FILE_PROCESSOR_ECS_TASK_DEFINITION_NAME",
+        "FILE_STATUS_UPDATE_URL",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SECURITY_GROUP_ID",
+        "SLP-DLP-mail_Secret_key",
+        "SUBNET_ID",
+        "SecurityGroup",
+        "ZIP_EXTRACTOR_ECS_CONTAINER_NAME",
+        "ZIP_EXTRACTOR_ECS_TASK_DEFINITION_NAME",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "qarelease"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_OneRIM-ML-Dev_ecr_cicd_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::852554894882:role/CloudFormation-Assumed-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-cluster"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-repository"
+        },
+        "ECRDLPApiZipExtractorServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-zip-extraction-repository"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-slp-repository"
+        },
+        "ECS_CLUSTER_NAME": {
+          "isSecret": false,
+          "value": "$(Clustername-SLP-DLP)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-service"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-slp-service"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "FILE_PROCESSOR_BUCKET_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-dlp-qa-file-processor-bucket"
+        },
+        "FILE_PROCESSOR_ECS_CONTAINER_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-container"
+        },
+        "FILE_PROCESSOR_ECS_TASK_DEFINITION_NAME": {
+          "isSecret": false,
+          "value": "ff-qa-dlp-file-processor-task"
+        },
+        "FILE_STATUS_UPDATE_URL": {
+          "isSecret": false,
+          "value": "https://dlpapiqa.freyraim.com/file_process_status"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "f-ml-slp-dlp-qa-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "f-ml-slp-dlp-qa-slpapi-bucket"
+        },
+        "SECURITY_GROUP_ID": {
+          "isSecret": false,
+          "value": "$(SecurityGroup)"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "sg-093ed52494a71b989"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "subnet-05125824bab9f2bfd"
+        },
+        "SUBNET_ID": {
+          "isSecret": false,
+          "value": "$(subnet)"
+        },
+        "ZIP_EXTRACTOR_ECS_CONTAINER_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-container"
+        },
+        "ZIP_EXTRACTOR_ECS_TASK_DEFINITION_NAME": {
+          "isSecret": false,
+          "value": "ff-qa-dlp-zip-extractor-task"
+        }
+      }
+    },
+    {
+      "id": 775,
+      "name": "ML-SLP-DLP-Common-Library -QA",
+      "variable_count": 4,
+      "variable_names": [
+        "ProductName",
+        "ProductPrefix",
+        "Ser-Name-Dlp-Api-Service",
+        "Ser-Name-Slp-Api-Service"
+      ],
+      "variables": {
+        "ProductName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp"
+        },
+        "ProductPrefix": {
+          "isSecret": false,
+          "value": "$(ProductName)-$(Release.EnvironmentName)"
+        },
+        "Ser-Name-Dlp-Api-Service": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-dlp-service"
+        },
+        "Ser-Name-Slp-Api-Service": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-qa-slp-service"
+        }
+      }
+    },
+    {
+      "id": 765,
+      "name": "ML-SLP-DLP-AWS infra info -Dev",
+      "variable_count": 29,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "ECRDLPApiServiceName",
+        "ECRDLPApiZipExtractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "ECS_CLUSTER_NAME",
+        "FF-Env",
+        "FF-Env-Domain",
+        "FILE_PROCESSOR_BUCKET_NAME",
+        "FILE_PROCESSOR_ECS_CONTAINER_NAME",
+        "FILE_PROCESSOR_ECS_TASK_DEFINITION_NAME",
+        "FILE_STATUS_UPDATE_URL",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SECURITY_GROUP_ID",
+        "SLP-DLP-mail_Secret_key",
+        "SUBNET_ID",
+        "SecurityGroup",
+        "ZIP_EXTRACTOR_ECS_CONTAINER_NAME",
+        "ZIP_EXTRACTOR_ECS_TASK_DEFINITION_NAME",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "development"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_OneRIM-ML-Dev_ecr_cicd_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::852554894882:role/CloudFormation-Assumed-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-cluster"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-repository"
+        },
+        "ECRDLPApiZipExtractorServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-zip-extraction-repository"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-slp-repository"
+        },
+        "ECS_CLUSTER_NAME": {
+          "isSecret": false,
+          "value": "$(Clustername-SLP-DLP)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-service"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-slp-service"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "FILE_PROCESSOR_BUCKET_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-dlp-dev-file-processor-bucket"
+        },
+        "FILE_PROCESSOR_ECS_CONTAINER_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-container"
+        },
+        "FILE_PROCESSOR_ECS_TASK_DEFINITION_NAME": {
+          "isSecret": false,
+          "value": "ff-dev-dlp-file-processor-task"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-dev-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-dev-slpapi-bucket"
+        },
+        "SECURITY_GROUP_ID": {
+          "isSecret": false,
+          "value": "$(SecurityGroup)"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "sg-093ed52494a71b989"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "subnet-05125824bab9f2bfd"
+        },
+        "SUBNET_ID": {
+          "isSecret": false,
+          "value": "$(subnet)"
+        },
+        "ZIP_EXTRACTOR_ECS_CONTAINER_NAME": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-container"
+        },
+        "ZIP_EXTRACTOR_ECS_TASK_DEFINITION_NAME": {
+          "isSecret": false,
+          "value": "ff-dev-dlp-zip-extractor-task"
+        },
+        "FILE_STATUS_UPDATE_URL": {
+          "isSecret": false,
+          "value": "https://dlpapidev.freyraim.com/file_process_status"
+        }
+      }
+    },
+    {
+      "id": 763,
+      "name": "ML-SLP-DLP-Common-Library -Dev",
+      "variable_count": 5,
+      "variable_names": [
+        "ProductName",
+        "ProductPrefix",
+        "Ser-Name-Dlp-Api-Service",
+        "Ser-Name-Dlp-ZipExtractor-Service",
+        "Ser-Name-Slp-Api-Service"
+      ],
+      "variables": {
+        "ProductName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp"
+        },
+        "ProductPrefix": {
+          "isSecret": false,
+          "value": "$(ProductName)-$(Release.EnvironmentName)"
+        },
+        "Ser-Name-Dlp-Api-Service": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-service"
+        },
+        "Ser-Name-Slp-Api-Service": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-slp-service"
+        },
+        "Ser-Name-Dlp-ZipExtractor-Service": {
+          "isSecret": false,
+          "value": "ff-ml-slpdlp-dev-dlp-zip-extraction-service"
+        }
+      }
+    },
+    {
+      "id": 549,
+      "name": "ML-SLP-DLP-vapt-IaC-Variables",
+      "variable_count": 17,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-vapt-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-vapt-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-vapt-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-vapt-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-vapt-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-vapt-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-vapt-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-vapt-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:859117448751:loadbalancer/app/ff-ml-slp-dlp-vapt/7ebd00f74ee311f0"
+        },
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ALBDNS": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-1015120050.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": false,
+          "value": "sg-05582b0d18aee902d"
+        },
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": false,
+          "value": "http://ff-ml-slp-dlp-vapt-1015120050.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-vapt-internet-alb-stack-LoadBalancerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt"
+        },
+        "ff-ml-slp-dlp-vapt-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:859117448751:cluster/ff-ml-slp-dlp-vapt-cluster"
+        },
+        "ff-ml-slp-dlp-vapt-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-cluster"
+        },
+        "ff-ml-slp-dlp-vapt-dlpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-dlp-repository"
+        },
+        "ff-ml-slp-dlp-vapt-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "859117448751.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-vapt-dlp-repository"
+        },
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:859117448751:listener/app/ff-ml-slp-dlp-vapt/7ebd00f74ee311f0/9ccbe3643954e3ee"
+        },
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-dlp-service"
+        },
+        "ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:859117448751:task-definition/ff-ml-slp-dlp-vapt-dlp-task-definition:2"
+        },
+        "ff-ml-slp-dlp-vapt-slpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-slp-repository"
+        },
+        "ff-ml-slp-dlp-vapt-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "859117448751.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-vapt-slp-repository"
+        },
+        "ff-ml-slp-dlp-vapt-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:859117448751:task-definition/ff-ml-slp-dlp-vapt-slp-task-definition:2"
+        },
+        "ff-ml-slp-dlp-vapt-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-slp-service"
+        }
+      }
+    },
+    {
+      "id": 548,
+      "name": "slp-dlp-vapt-IaC-Variables",
+      "variable_count": 1,
+      "variable_names": [
+        "Createdby"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        }
+      }
+    },
+    {
+      "id": 547,
+      "name": "ML-SLP-DLP-vapt-AWS infra info",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_freyr-vapt_cicd-automation-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::859117448751:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-processor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName)"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-vapt-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-vapt-vpc-stack-DBSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-vapt-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-vapt-dlpapi-dlp-extractortaskdef-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 436,
+      "name": "ML-SLP-DLP-prod-IaC-Variables",
+      "variable_count": 29,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-bucket-stack-S3BucketName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-prod-dlpapi-dlpextractor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-prod-dlpapi-dlpextractor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-prod-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-prod-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-prod-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-prod-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-prod-internet-alb-stack-WAFLogGroupARN",
+        "ff-ml-slp-dlp-prod-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-prod-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-prod-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-prod-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ALBDNS": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-WAFLogGroupARN": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-ecr-stack-RepoName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-slpapi-ecr-stack-RepoName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-internet-alb-stack-LoadBalancerName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-stack-RepoName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-stack-ECRRepoURI": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlpextractor-ecr-stack-RepoName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlpextractor-ecr-stack-ECRRepoURI": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-ContainerName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-TaskDefinition": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        },
+        "ff-ml-slp-dlp-prod-dlpapi-dlp-bucket-stack-S3BucketName": {
+          "isSecret": true,
+          "value": "***SECRET***"
+        }
+      }
+    },
+    {
+      "id": 435,
+      "name": "ML-SLP-DLP-prod-AWS infra info",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_Freya-Fusion-Prod_iac_cicd_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::702531420193:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "true"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName)"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-prod-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-prod-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-prod-vpc-stack-AppSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_Freya-Fusion-Prod"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-prod-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-prod-dlpapi-dlp-extractortaskdef-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 434,
+      "name": "ML-SLP-DLP-preprod-IaC-Variables",
+      "variable_count": 30,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-bucket-stack-S3BucketARN",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-bucket-stack-S3BucketName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlpextractor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-preprod-dlpapi-dlpextractor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-preprod-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-preprod-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-preprod-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-preprod-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-WAFLogGroupARN",
+        "ff-ml-slp-dlp-preprod-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-preprod-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-preprod-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-preprod-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:262621372723:loadbalancer/app/ff-ml-slp-dlp-preprod/f2dd8782f34a5b2b"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ALBDNS": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-511488244.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": false,
+          "value": "sg-08593f106576d84cd"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-WAFLogGroupARN": {
+          "isSecret": false,
+          "value": "arn:aws:logs:us-east-1:262621372723:log-group:aws-waf-logs-ff-ml-slp-dlp-preprod-alb:*"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": false,
+          "value": "http://ff-ml-slp-dlp-preprod-511488244.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-preprod-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:262621372723:cluster/ff-ml-slp-dlp-preprod-cluster"
+        },
+        "ff-ml-slp-dlp-preprod-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-cluster"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "262621372723.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-preprod-dlp-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:262621372723:listener/app/ff-ml-slp-dlp-preprod/f2dd8782f34a5b2b/bd2f9046bdb02704"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-service"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:262621372723:task-definition/ff-ml-slp-dlp-preprod-dlp-task-definition:2"
+        },
+        "ff-ml-slp-dlp-preprod-slpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-slp-repository"
+        },
+        "ff-ml-slp-dlp-preprod-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "262621372723.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-preprod-slp-repository"
+        },
+        "ff-ml-slp-dlp-preprod-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:262621372723:task-definition/ff-ml-slp-dlp-preprod-slp-task-definition:1"
+        },
+        "ff-ml-slp-dlp-preprod-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-slp-service"
+        },
+        "ff-ml-slp-dlp-preprod-internet-alb-stack-LoadBalancerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "262621372723.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-preprod-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlpextractor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlpextractor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "262621372723.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-preprod-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-processor-container"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:262621372723:task-definition/ff-ml-slp-dlp-preprod-dlp-processor-task-definition:1"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-processor-task-definition"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-fileextraction-container"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:262621372723:task-definition/ff-ml-slp-dlp-preprod-dlp-fileextraction-task-definition:1"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-fileextraction-task-definition"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-bucket-stack-S3BucketName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlp-processor"
+        },
+        "ff-ml-slp-dlp-preprod-dlpapi-dlp-bucket-stack-S3BucketARN": {
+          "isSecret": false,
+          "value": "arn:aws:s3:::ff-ml-slp-dlp-preprod-dlp-processor"
+        }
+      }
+    },
+    {
+      "id": 433,
+      "name": "ML-SLP-DLP-preprod-AWS infra info",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_FreyaFusion-PreProd_cicd-pipeline-user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::262621372723:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName)"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-preprod-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-preprod-vpc-stack-AppSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-preprod-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-preprod-dlpapi-dlp-extractortaskdef-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 428,
+      "name": "ML-SLP-DLP-nfr-IaC-Variables",
+      "variable_count": 18,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-nfr-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-nfr-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-nfr-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-nfr-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-WAFLogGroupARN",
+        "ff-ml-slp-dlp-nfr-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-nfr-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-nfr-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-nfr-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:558053703506:loadbalancer/app/ff-ml-slp-dlp-nfr/f028b646d2b627b0"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ALBDNS": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-633474615.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": false,
+          "value": "sg-0867bcfbe4cdb4fd6"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-WAFLogGroupARN": {
+          "isSecret": false,
+          "value": "arn:aws:logs:us-east-1:558053703506:log-group:aws-waf-logs-ff-ml-slp-dlp-nfr-alb:*"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": false,
+          "value": "http://ff-ml-slp-dlp-nfr-633474615.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-nfr-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:cluster/ff-ml-slp-dlp-nfr-cluster"
+        },
+        "ff-ml-slp-dlp-nfr-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-cluster"
+        },
+        "ff-ml-slp-dlp-nfr-dlpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-dlp-repository"
+        },
+        "ff-ml-slp-dlp-nfr-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-nfr-dlp-repository"
+        },
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:558053703506:listener/app/ff-ml-slp-dlp-nfr/f028b646d2b627b0/bcca5654c2824cdb"
+        },
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-dlp-service"
+        },
+        "ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-nfr-dlp-task-definition:1"
+        },
+        "ff-ml-slp-dlp-nfr-slpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-slp-repository"
+        },
+        "ff-ml-slp-dlp-nfr-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-nfr-slp-repository"
+        },
+        "ff-ml-slp-dlp-nfr-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-nfr-slp-task-definition:1"
+        },
+        "ff-ml-slp-dlp-nfr-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-slp-service"
+        },
+        "ff-ml-slp-dlp-nfr-internet-alb-stack-LoadBalancerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr"
+        }
+      }
+    },
+    {
+      "id": 427,
+      "name": "ML-SLP-DLP-nfr-AWS infra info",
+      "variable_count": 19,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "ECRDLPApiServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "FF-Env",
+        "FF-Env-Domain",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_FreyaFusion-SQA_cicd_automation_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::558053703506:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-nfr-ecs-cluster-stack-ECSClusterName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-nfr-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-nfr-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-nfr-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-nfr-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-nfr-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-nf-vpc-stack-DBSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-nfr-vpc-stack-PrivateSubnet1Id)"
+        }
+      }
+    },
+    {
+      "id": 418,
+      "name": "ML-SLP-DLP-sqa-IaC-Variables",
+      "variable_count": 29,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-bucket-stack-S3BucketName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlpextractor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-sqa-dlpapi-dlpextractor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-WAFLogGroupARN",
+        "ff-ml-slp-dlp-sqa-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-sqa-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-sqa-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-sqa-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:558053703506:loadbalancer/app/ff-ml-slp-dlp-sqa/f616dffba96e230f"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ALBDNS": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-339614862.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": false,
+          "value": "sg-0525987086f44d247"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-WAFLogGroupARN": {
+          "isSecret": false,
+          "value": "arn:aws:logs:us-east-1:558053703506:log-group:aws-waf-logs-ff-ml-slp-dlp-sqa-alb:*"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": false,
+          "value": "http://ff-ml-slp-dlp-sqa-339614862.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:cluster/ff-ml-slp-dlp-sqa-cluster"
+        },
+        "ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-cluster"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-sqa-dlp-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:558053703506:listener/app/ff-ml-slp-dlp-sqa/f616dffba96e230f/2b7b04d8c2a76198"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-service"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-sqa-dlp-task-definition:2"
+        },
+        "ff-ml-slp-dlp-sqa-slpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-slp-repository"
+        },
+        "ff-ml-slp-dlp-sqa-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-sqa-slp-repository"
+        },
+        "ff-ml-slp-dlp-sqa-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-sqa-slp-task-definition:1"
+        },
+        "ff-ml-slp-dlp-sqa-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-slp-service"
+        },
+        "ff-ml-slp-dlp-sqa-internet-alb-stack-LoadBalancerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-sqa-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlpextractor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlpextractor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "558053703506.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-sqa-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-processor-container"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-sqa-dlp-processor-task-definition:1"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-processor-task-definition"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-fileextraction-container"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:558053703506:task-definition/ff-ml-slp-dlp-sqa-dlp-fileextraction-task-definition:1"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-fileextraction-task-definition"
+        },
+        "ff-ml-slp-dlp-sqa-dlpapi-dlp-bucket-stack-S3BucketName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlp-processor"
+        }
+      }
+    },
+    {
+      "id": 417,
+      "name": "ML-SLP-DLP-sqa-AWS infra info",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "release"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_FreyaFusion-SQA_cicd_automation_user-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::558053703506:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "prod_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-processor-ecr-taskdef-stack-TaskDefinitionName)"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-sqa-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-sqa-vpc-stack-AppSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-sqa-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-sqa-dlpapi-dlp-extractortaskdef-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 393,
+      "name": "ML-SLP-DLP-devsecops-IaC-Variables",
+      "variable_count": 30,
+      "variable_names": [
+        "Createdby",
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-HTTPSListenerArn",
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketARN",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketName",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-ContainerName",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-ContainerName",
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinition",
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinitionName",
+        "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterArn",
+        "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterName",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ALBDNS",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerARN",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerDNS",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-InternetALBSecurityGroupId",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-LoadBalancerName",
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-WAFLogGroupARN",
+        "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-ECRRepoURI",
+        "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-RepoName",
+        "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-ClusterServiceName",
+        "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-TaskDefinition"
+      ],
+      "variables": {
+        "Createdby": {
+          "isSecret": false,
+          "value": "CICD_Automation_pipeline"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerARN": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:118153336476:loadbalancer/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ALBDNS": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-InternetALBSecurityGroupId": {
+          "isSecret": false,
+          "value": "sg-07e9157a12f3fbb9d"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-WAFLogGroupARN": {
+          "isSecret": false,
+          "value": "arn:aws:logs:us-east-1:118153336476:log-group:aws-waf-logs-ff-ml-slp-dlp-devsecops-alb:*"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-ApplicationLoadBalancerDNS": {
+          "isSecret": false,
+          "value": "http://ff-ml-slp-dlp-devsecops-729367771.us-east-1.elb.amazonaws.com"
+        },
+        "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterArn": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:118153336476:cluster/ff-ml-slp-dlp-devsecops-cluster"
+        },
+        "ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-cluster"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-HTTPSListenerArn": {
+          "isSecret": false,
+          "value": "arn:aws:elasticloadbalancing:us-east-1:118153336476:listener/app/ff-ml-slp-dlp-devsecops/3e544e18b4ca3ca0/fedff56582524a16"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-service"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-task-definition:6"
+        },
+        "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-slp-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-slp-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-slp-task-definition:3"
+        },
+        "ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-ClusterServiceName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-slp-service"
+        },
+        "ff-ml-slp-dlp-devsecops-internet-alb-stack-LoadBalancerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-processor-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-RepoName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-ECRRepoURI": {
+          "isSecret": false,
+          "value": "118153336476.dkr.ecr.us-east-1.amazonaws.com/ff-ml-slp-dlp-devsecops-dlp-fileextraction-repository"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-processor-container"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-processor-task-definition:4"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-processor-task-definition"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-ContainerName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-container"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinition": {
+          "isSecret": false,
+          "value": "arn:aws:ecs:us-east-1:118153336476:task-definition/ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition:2"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinitionName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-fileextraction-task-definition"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlp-processor"
+        },
+        "ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketARN": {
+          "isSecret": false,
+          "value": "arn:aws:s3:::ff-ml-slp-dlp-devsecops-dlp-processor"
+        }
+      }
+    },
+    {
+      "id": 392,
+      "name": "ML-SLP-DLP-devsecops-AWS infra info",
+      "variable_count": 26,
+      "variable_names": [
+        "ADOBranch",
+        "AWSAccount",
+        "AWSRegion",
+        "CloudformationRole",
+        "Clustername-SLP-DLP",
+        "DLP_Processor_Bucket",
+        "ECRDLPApiServiceName",
+        "ECRDLPProcessorServiceName",
+        "ECRDLPextractorServiceName",
+        "ECRSLPApiServiceName",
+        "ECSDLPApiServiceName",
+        "ECSSLPApiServiceName",
+        "EXTRACTOR_ECS_TASK_DEFINITION",
+        "FF-Env",
+        "FF-Env-Domain",
+        "File-processor-container",
+        "IaC-AdoBranch",
+        "IaC-Templates-AdoBranch",
+        "PROCESSOR_ECS_TASK_DEFINITION",
+        "S3_DLP-API_Bucket",
+        "S3_SLP-API_Bucket",
+        "SLP-DLP-mail_Secret_key",
+        "SecurityGroup",
+        "Zip-extraction-processor",
+        "isSecret",
+        "subnet"
+      ],
+      "variables": {
+        "ADOBranch": {
+          "isSecret": false,
+          "value": "main"
+        },
+        "AWSAccount": {
+          "isSecret": false,
+          "value": "AWS_FreyrDevSecOps_cicd-automation-Freyr-Unified-RIMS"
+        },
+        "AWSRegion": {
+          "isSecret": false,
+          "value": "us-east-1"
+        },
+        "CloudformationRole": {
+          "isSecret": false,
+          "value": "arn:aws:iam::118153336476:role/CloudFormation-CICD-Role"
+        },
+        "Clustername-SLP-DLP": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-ecs-cluster-stack-ECSClusterName)"
+        },
+        "DLP_Processor_Bucket": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpextractor-S3-bucket-stack-S3BucketName)"
+        },
+        "ECRDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpapi-ecr-stack-RepoName)"
+        },
+        "ECRDLPextractorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpextractor-ecr-stack-RepoName)"
+        },
+        "ECRDLPProcessorServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpprocessor-ecr-stack-RepoName)"
+        },
+        "ECRSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-slpapi-ecr-stack-RepoName)"
+        },
+        "ECSDLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpapi-ecs-stack-ClusterServiceName)"
+        },
+        "ECSSLPApiServiceName": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-slpapi-ecs-stack-ClusterServiceName)"
+        },
+        "EXTRACTOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-TaskDefinitionName)"
+        },
+        "FF-Env": {
+          "isSecret": false,
+          "value": "$(Release.EnvironmentName)."
+        },
+        "FF-Env-Domain": {
+          "isSecret": false,
+          "value": "$(FF-Env)$(FF-Main-Domain)"
+        },
+        "File-processor-container": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpprocessor-ecs-stack-ContainerName)"
+        },
+        "IaC-AdoBranch": {
+          "isSecret": false,
+          "value": "main_parameter"
+        },
+        "IaC-Templates-AdoBranch": {
+          "isSecret": false,
+          "value": "main_templates"
+        },
+        "isSecret": {
+          "isSecret": false,
+          "value": "false"
+        },
+        "PROCESSOR_ECS_TASK_DEFINITION": {
+          "isSecret": false,
+          "value": "ff-devsecops-dlp-file-processor-task-def"
+        },
+        "S3_DLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-dlpapi-bucket"
+        },
+        "S3_SLP-API_Bucket": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp-devsecops-slpapi-bucket"
+        },
+        "SecurityGroup": {
+          "isSecret": false,
+          "value": "$(freyafusion-devsecops-vpc-stack-DBSecurityGroupId)"
+        },
+        "SLP-DLP-mail_Secret_key": {
+          "isSecret": false,
+          "value": "SES_SMTP_FreyaFusion"
+        },
+        "subnet": {
+          "isSecret": false,
+          "value": "$(freyafusion-devsecops-vpc-stack-PrivateSubnet1Id)"
+        },
+        "Zip-extraction-processor": {
+          "isSecret": false,
+          "value": "$(ff-ml-slp-dlp-devsecops-dlpextractor-ecs-stack-ContainerName)"
+        }
+      }
+    },
+    {
+      "id": 391,
+      "name": "ML-SLP-DLP-Common-Library",
+      "variable_count": 6,
+      "variable_names": [
+        "ProductName",
+        "ProductPrefix",
+        "Ser-Name-Dlp-Api-Service",
+        "Ser-Name-Dlp-extractor-Service",
+        "Ser-Name-Dlp-processor-Service",
+        "Ser-Name-Slp-Api-Service"
+      ],
+      "variables": {
+        "ProductName": {
+          "isSecret": false,
+          "value": "ff-ml-slp-dlp"
+        },
+        "ProductPrefix": {
+          "isSecret": false,
+          "value": "$(ProductName)-$(Release.EnvironmentName)"
+        },
+        "Ser-Name-Dlp-Api-Service": {
+          "isSecret": false,
+          "value": "dlpapi"
+        },
+        "Ser-Name-Dlp-extractor-Service": {
+          "isSecret": false,
+          "value": "dlpextractor"
+        },
+        "Ser-Name-Dlp-processor-Service": {
+          "isSecret": false,
+          "value": "dlpprocessor"
+        },
+        "Ser-Name-Slp-Api-Service": {
+          "isSecret": false,
+          "value": "slpapi"
+        }
+      }
+    }
+  ]
+}

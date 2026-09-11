@@ -1,0 +1,11 @@
+# Phase 1 polling / timeouts (seconds)
+stability_timeout_seconds: 180
+poll_interval_seconds: 15
+smoke_timeout_seconds: 10
+smoke_retries: 2
+
+# Pending tasks: spec allows an explicit acceptable state. Default is strict (pending must be 0).
+allow_pending_tasks: false
+
+# Phase 2 log lookback uses the deployment verification window from input.
+cloudwatch_log_limit: 50
